@@ -11,17 +11,17 @@ class Rater(models.Model):
 
 
 class Rating(models.Model):
-    rater_id = models.ForeignKey(Rater)
+    user = models.ForeignKey(Rater)
     movie = models.ForeignKey(Movie)
-    rating = models.PositiveIntegerField()
+    rating = models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return self.rating
+        return 'user {} gives {} a {}'.format(self.user, self.movie, self.rating)
 
 
 class Movie(models.Model):
-    movie_name = models.CharField(max_length=140)
-    movie_id = models.PositiveIntegerField()
+    title = models.CharField(max_length=255)
+
 
     def __str__(self):
-        return '{}: {}'.format(self.movie_name, self.movie_id)
+        return '{}'.format(self.title)
