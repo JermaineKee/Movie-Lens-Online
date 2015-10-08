@@ -35,11 +35,11 @@ class Movie(models.Model):
 
 class Rating(models.Model):
     rater = models.ForeignKey(Rater)
-    title = models.ForeignKey(Movie)
+    movie = models.ForeignKey(Movie)
     rating = models.PositiveSmallIntegerField()
 
     def __str__(self):
-        return 'Rater {}, Title: {} ,Rating: {}'.format(self.user, self.movie, self.rating)
+        return 'Rater {}, Title: {} ,Rating: {}'.format(self.rater, self.movie, self.rating)
 
 
 def load_user_data():
@@ -63,7 +63,7 @@ def load_user_data():
                     'occupation': row['Occupation'],
                     'zipcode': row['Zip-code'],
                 },
-                'model': 'ratings.Rater',
+                'model': 'moviedb.Rater',
                 'pk': int(row['UserID']),
             }
 
@@ -88,7 +88,7 @@ def load_movie_data():
                 'fields': {
                     'title': row['Title'],
                 },
-                'model': 'movies.Movie',
+                'model': 'moviedb.Movie',
                 'pk': int(row['MovieID']),
             }
             movies.append(movie)
@@ -110,11 +110,11 @@ def load_ratings_data():
         for row in reader:
             rating = {
                 'fields': {
-                    'user': row['UserID'],
+                    'rater': row['UserID'],
                     'movie': row['MovieID'],
                     'rating': row['Rating'],
                 },
-                'model': 'movies.Rating',
+                'model': 'moviedb.Rating',
             }
             ratings.append(rating)
 
