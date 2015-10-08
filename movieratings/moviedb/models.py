@@ -118,5 +118,5 @@ def load_ratings_data():
             }
             ratings.append(rating)
 
-        with open('ratings.json', 'w') as f:
-            f.write(json.dumps(ratings))
+    with open('ratings.json', 'w') as f:
+        f.write(json.dumps(ratings))
