@@ -72,8 +72,6 @@ def load_user_data():
         with open('user.json', 'w') as f:
             f.write(json.dumps(users))
 
-        print(json.dumps(users, sort_keys=True, indent=4, separators=(',', ':')))
-
 
 def load_movie_data():
     import csv
@@ -97,8 +95,6 @@ def load_movie_data():
 
         with open('movies.json', 'w') as f:
             f.write(json.dumps(movies))
-
-            print(json.dumps(movies))
 
 
 def load_ratings_data():
@@ -124,5 +120,3 @@ def load_ratings_data():
 
         with open('ratings.json', 'w') as f:
             f.write(json.dumps(ratings))
-
-            print(json.dumps(ratings, sort_keys=True, indent=4, separators=(',', ':')))
