@@ -3,3 +3,5 @@
 .envrc
 __pycache__
 .direnv
+ml-1m/
+fixtures
