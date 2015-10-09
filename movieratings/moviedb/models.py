@@ -29,6 +29,9 @@ class Rater(models.Model):
 class Movie(models.Model):
     title = models.CharField(max_length=255)
 
+    def average_rating(self):
+        return self.rating_set.aggregate(models.Avg('rating'))['rating__avg']
+
     def __str__(self):
         return '{}'.format(self.title)
 
@@ -36,10 +39,10 @@ class Movie(models.Model):
 class Rating(models.Model):
     rater = models.ForeignKey(Rater)
     movie = models.ForeignKey(Movie)
-    rating = models.PositiveSmallIntegerField()
+    rating = models.IntegerField()
 
     def __str__(self):
-        return 'Rater {}, Title: {} ,Rating: {}'.format(self.rater, self.movie, self.rating)
+        return 'Rater {}, Title: {}, Rating: {}'.format(self.rater, self.movie, self.rating)
 
 
 def load_user_data():
