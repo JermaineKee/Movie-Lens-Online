@@ -39,3 +39,5 @@ class Rating(models.Model):
     def __str__(self):
         return 'Rater {}, Title: {}, Rating: {}'.format
         (self.rater, self.movie, self.rating)
+
+        
